@@ -1,14 +1,20 @@
-const express = require("express");
-const {engine} =require("express-handlebars")
+const express = require('express');
 
-const app = express()
-const PORT = process.env.PORT || 3001
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
+const path = require('path');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars")
-app.set("views", "/.views");
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.use(express.static(path.join(__dirname, 'public')));
+//app.set("views", "/.views");
+
+app.use(require('./controllers/home-route'));
 
 app.listen(PORT, () => console.log(`Now Listening on ${PORT}`))
