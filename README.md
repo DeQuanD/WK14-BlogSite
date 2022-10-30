@@ -14,7 +14,7 @@
   npm i
 
   # Usage
-  npm start or go to https://glacial-caverns-04260.herokuapp.com/login
+  npm start or go to https://glacial-caverns-04260.herokuapp.com/
 
   # Test
   npm test
